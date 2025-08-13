@@ -1,0 +1,7 @@
+{
+  "name": "PathFinder: Offline-First Adventure Planner",
+  "description": "A robust trip planner for hikers, campers, and overlanders. Download maps, weather, and routes for offline use. Features AI-powered risk assessment, gear checklists, and emergency protocols for safe exploration of remote areas.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
