@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { LogEntry, Trip } from './types';
-import { BookHeartIcon, PlusIcon, XIcon, CameraIcon, UploadCloudIcon } from './components/icons';
+import { LogEntry, Trip } from '../types';
+import { BookHeartIcon, PlusIcon, XIcon, CameraIcon, UploadCloudIcon } from './icons';
 
 interface LogbookProps {
     trips: Trip[];

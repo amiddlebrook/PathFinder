@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { TrainingActivity } from './types';
-import { TrendingUpIcon, PlusIcon, ImageIcon, CameraIcon, UploadCloudIcon } from './components/icons';
+import { TrainingActivity } from '../types';
+import { TrendingUpIcon, PlusIcon, ImageIcon, CameraIcon, UploadCloudIcon } from './icons';
 
 interface TrainingProps {
     activities: TrainingActivity[];

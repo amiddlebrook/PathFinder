@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { CloudSunIcon, SearchIcon, SunIcon, CloudIcon, CloudRainIcon, WindIcon } from './components/icons';
-import { getWeatherForLocation, LiveWeatherData } from './services/geminiService';
+import { CloudSunIcon, SearchIcon, SunIcon, CloudIcon, CloudRainIcon, WindIcon } from './icons';
+import { getWeatherForLocation, LiveWeatherData } from '../services/geminiService';
 
 const LoadingSpinner: React.FC = () => (
     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
