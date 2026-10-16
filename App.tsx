@@ -230,7 +230,7 @@ const App: React.FC = () => {
                     >
                     <div className="flex justify-between items-start">
                         <h3 className="font-semibold text-white flex-grow mr-2">{trip.name}</h3>
-                        {trip.offlineMap && <MapIcon className="w-5 h-5 text-emerald-400 flex-shrink-0" />}
+                        
                     </div>
                     <div className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] mt-2">
                         <MapPinIcon className="w-4 h-4" />

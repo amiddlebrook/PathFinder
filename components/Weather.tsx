@@ -24,7 +24,7 @@ const WeatherIcon: React.FC<{ condition: string, className?: string }> = ({ cond
 }
 
 const Weather: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState('Yosemite National Park');
+    const [searchQuery, setSearchQuery] = useState('Denver');
     const [weatherData, setWeatherData] = useState<LiveWeatherData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -45,7 +45,7 @@ const Weather: React.FC = () => {
     };
 
     useEffect(() => {
-        fetchWeather('Yosemite National Park');
+        fetchWeather('Denver');
     }, []);
 
     const handleSearch = (e: React.FormEvent) => {
@@ -62,7 +62,7 @@ const Weather: React.FC = () => {
                         <CloudSunIcon className="w-8 h-8 text-[var(--color-accent)]" />
                         <div>
                             <h2 className="text-3xl font-bold text-[var(--color-text-primary)]">Weather Center</h2>
-                            <p className="text-[var(--color-text-secondary)]">Get live forecasts powered by AI.</p>
+                            <p className="text-[var(--color-text-secondary)]">Live 7-day forecasts from Open-Meteo. Internet required.</p>
                         </div>
                     </div>
                     <form onSubmit={handleSearch} className="flex gap-2">
