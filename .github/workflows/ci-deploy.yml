@@ -21,6 +21,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Typecheck and build
         run: npm run build
+      - name: Validate Cloudflare Worker package
+        run: npx wrangler deploy --dry-run
       - name: Publish to Cloudflare Workers
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         env:
