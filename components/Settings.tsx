@@ -12,19 +12,23 @@ const Settings: React.FC<SettingsProps> = ({ currentTheme, onThemeChange }) => {
 
     const handleClearData = () => {
         if (window.confirm('Are you sure you want to delete ALL data? This includes all trips, gear, logs, and settings. This action cannot be undone.')) {
-            localStorage.clear();
+            Object.keys(localStorage).filter(key => key.startsWith('pathfinder_')).forEach(key => localStorage.removeItem(key));
             alert('All data has been cleared. The application will now reload.');
             window.location.reload();
         }
     };
 
     const handleExportData = () => {
-        const dataToExport: { [key: string]: any } = {};
+        const dataToExport: { [key: string]: unknown } = {};
+        const rawKeys = new Set(['pathfinder_theme', 'pathfinder_active_view', 'pathfinder_active_trip']);
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             if (key && key.startsWith('pathfinder_')) {
                 const value = localStorage.getItem(key);
-                 if (value) dataToExport[key] = JSON.parse(value);
+                 if (value !== null) {
+                     try { dataToExport[key] = rawKeys.has(key) ? value : JSON.parse(value); }
+                     catch { console.warn('Skipping invalid stored record:', key); }
+                 }
             }
         }
         const jsonString = JSON.stringify(dataToExport, null, 2);
@@ -51,11 +55,13 @@ const Settings: React.FC<SettingsProps> = ({ currentTheme, onThemeChange }) => {
                 const text = e.target?.result;
                 if (typeof text !== 'string') throw new Error("File is not readable.");
                 const data = JSON.parse(text);
+                if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Invalid backup data.');
+                const rawKeys = new Set(['pathfinder_theme', 'pathfinder_active_view', 'pathfinder_active_trip']);
                 if (window.confirm('Importing this file will overwrite all current data. Are you sure you want to proceed?')) {
-                    localStorage.clear();
+                    Object.keys(localStorage).filter(key => key.startsWith('pathfinder_')).forEach(key => localStorage.removeItem(key));
                     Object.keys(data).forEach(key => {
                         if (key.startsWith('pathfinder_')) {
-                            localStorage.setItem(key, JSON.stringify(data[key]));
+                            localStorage.setItem(key, rawKeys.has(key) ? String(data[key]) : JSON.stringify(data[key]));
                         }
                     });
                     alert('Data imported successfully. The application will now reload.');

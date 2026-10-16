@@ -20,6 +20,10 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ onSave, onClose, initialData 
       alert('Please fill out all fields.');
       return;
     }
+    if (endDate < startDate) {
+      alert('End date must not be earlier than start date.');
+      return;
+    }
     onSave({
       name,
       destination,

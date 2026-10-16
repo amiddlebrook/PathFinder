@@ -96,7 +96,11 @@ const App: React.FC = () => {
   useEffect(() => {
     loadDataFromStorage();
     window.addEventListener('storage', loadDataFromStorage);
-    return () => window.removeEventListener('storage', loadDataFromStorage);
+    window.addEventListener('pathfinder-data-updated', loadDataFromStorage);
+    return () => {
+      window.removeEventListener('storage', loadDataFromStorage);
+      window.removeEventListener('pathfinder-data-updated', loadDataFromStorage);
+    };
   }, [loadDataFromStorage]);
   
   const updateAndStore = useCallback(<T,>(key: string, data: T, setter: React.Dispatch<React.SetStateAction<T>>) => {
