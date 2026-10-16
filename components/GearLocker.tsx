@@ -28,6 +28,7 @@ const GearLocker: React.FC = () => {
     const updateAndStoreGear = (newGear: MasterGearItem[]) => {
         setGear(newGear);
         localStorage.setItem('pathfinder_gear_locker', JSON.stringify(newGear));
+        window.dispatchEvent(new Event('pathfinder-data-updated'));
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
