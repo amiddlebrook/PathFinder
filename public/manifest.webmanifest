@@ -1,0 +1,18 @@
+{
+  "short_name": "PathFinder",
+  "name": "PathFinder — Adventure Command Center",
+  "description": "Plan trips, track gear and journal adventures locally.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0b1719",
+  "background_color": "#0b1719"
+}

@@ -36,9 +36,9 @@ const RiskAssessment: React.FC<RiskAssessmentProps> = ({ trip, onAssessmentUpdat
         <div className="p-6 bg-[var(--color-bg-tertiary)]/50 rounded-xl border border-[var(--color-border)]">
           <h3 className="text-2xl font-bold text-[var(--color-text-primary)] flex items-center gap-3">
             <ShieldAlertIcon className="w-7 h-7 text-[var(--color-accent)]" />
-            AI Risk Assessment
+            Trip Planning Checklist
           </h3>
-          <p className="text-[var(--color-text-secondary)] mt-2">Analysis based on trip details. Always cross-reference with local authorities and real-time data.</p>
+          <p className="text-[var(--color-text-secondary)] mt-2">General safety checklist, not a site-specific forecast or verified trail assessment. Confirm with official sources.</p>
         </div>
         
         {/* Difficulty */}
@@ -92,7 +92,7 @@ const RiskAssessment: React.FC<RiskAssessmentProps> = ({ trip, onAssessmentUpdat
       <ShieldAlertIcon className="w-16 h-16 text-[var(--color-text-tertiary)] mb-4" />
       <h3 className="text-xl font-bold text-[var(--color-text-primary)]">Ready for a Risk Assessment?</h3>
       <p className="text-[var(--color-text-secondary)] mt-2 max-w-md">
-        Use AI to analyze your trip's destination and dates for potential hazards, weather patterns, and trail difficulty.
+        Generate a general preparation checklist and locate your destination. Trail difficulty and current conditions must be checked with official sources.
       </p>
       <button
         onClick={handleAssessRisk}
@@ -100,7 +100,7 @@ const RiskAssessment: React.FC<RiskAssessmentProps> = ({ trip, onAssessmentUpdat
         className="mt-6 inline-flex items-center gap-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/50"
       >
         {isLoading ? <LoadingSpinner /> : <SparklesIcon className="w-5 h-5" />}
-        {isLoading ? 'Analyzing...' : 'Generate AI Assessment'}
+        {isLoading ? 'Analyzing...' : 'Generate Checklist'}
       </button>
       {error && <p className="text-red-400 mt-4">{error}</p>}
     </div>

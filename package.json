@@ -1,21 +1,30 @@
 {
-  "name": "pathfinder:-offline-first-adventure-planner",
+  "name": "pathfinder-adventure-planner",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "react": "18.3.1",
-    "@google/genai": "0.14.0",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "leaflet": "1.9.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/leaflet": "^1.9.12",
+    "typescript": "~5.8.3",
+    "vite": "^6.2.0",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.3",
+    "autoprefixer": "^10.4.20",
+    "wrangler": "^4.0.0"
   }
 }

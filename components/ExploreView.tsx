@@ -82,7 +82,7 @@ const ExploreView: React.FC = () => {
                     }
                 });
                 L.marker([coords.lat, coords.lng]).addTo(mapRef.current)
-                    .bindPopup(`<b>${searchQuery}</b>`)
+                    .bindPopup(searchQuery)
                     .openPopup();
             }
         } catch (err) {
@@ -104,7 +104,7 @@ const ExploreView: React.FC = () => {
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search any location..."
+                                placeholder="City, park or destination..."
                                 className="w-full bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] rounded-lg pl-10 pr-4 py-2.5 text-[var(--color-text-primary)] placeholder-[var(--color-text-secondary)] focus:ring-2 focus:ring-[var(--color-accent)] focus:outline-none transition"
                             />
                         </div>
@@ -116,7 +116,7 @@ const ExploreView: React.FC = () => {
                 </div>
             </div>
 
-             <div className="absolute top-4 right-4 z-20">
+             <div className="absolute top-20 md:top-4 right-4 z-20">
                  <div className="flex items-center gap-2 bg-[var(--color-bg-secondary)]/70 backdrop-blur-md rounded-lg p-1 border border-[var(--color-border)] shadow-2xl">
                     <button onClick={() => setActiveLayer('topo')} className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-colors ${activeLayer === 'topo' ? 'bg-[var(--color-accent)] text-white' : 'bg-transparent text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-interactive)]/50'}`}>Topo</button>
                     <button onClick={() => setActiveLayer('satellite')} className={`px-4 py-1.5 text-sm font-semibold rounded-md transition-colors ${activeLayer === 'satellite' ? 'bg-[var(--color-accent)] text-white' : 'bg-transparent text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-interactive)]/50'}`}>Satellite</button>
@@ -124,6 +124,11 @@ const ExploreView: React.FC = () => {
             </div>
 
             <div ref={mapContainerRef} className="flex-grow w-full h-full z-0"></div>
+            <div className="pointer-events-none absolute bottom-7 left-5 z-10 max-w-sm hidden sm:block bg-[var(--color-bg-primary)]/90 backdrop-blur-md px-5 py-4 rounded-2xl border border-[var(--color-border)] shadow-xl">
+              <div className="text-xs uppercase tracking-[0.2em] font-bold text-[var(--color-accent-text)]">PathFinder / Explore</div>
+              <h2 className="text-lg font-extrabold mt-1">Discover your next route</h2>
+              <p className="text-xs mt-1 text-[var(--color-text-secondary)]">Terrain and satellite layers · online map tiles</p>
+            </div>
         </div>
     );
 };
